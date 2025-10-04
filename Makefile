@@ -14,7 +14,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = philo
 SRC = main.c
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
