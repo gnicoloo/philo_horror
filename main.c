@@ -306,6 +306,7 @@ void *ft_death_star(void *arg)
                 break;
             }
         }
+        usleep(1000);
     }
     return NULL;
 }
