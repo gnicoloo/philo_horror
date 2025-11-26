@@ -6,7 +6,7 @@
 /*   By: gnicolo <gnicolo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:51:10 by gnicolo           #+#    #+#             */
-/*   Updated: 2025/11/26 14:27:19 by gnicolo          ###   ########.fr       */
+/*   Updated: 2025/11/26 16:48:00 by gnicolo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	ft_destroy_mutex(t_philo *philos, t_data *data)
 	i = 0;
 	while (i < data->number_of_philosophers)
 	{
-		pthread_mutex_destroy(&philos[i].data->write_mutex);
 		pthread_mutex_destroy(&philos[i].meal_lock);
 		pthread_mutex_destroy(&philos[i].data->forks[i]);
 		i++;
 	}
+	pthread_mutex_destroy(&philos[0].data->write_mutex);
 	pthread_mutex_destroy(&data->all_ate_mutex);
 }
 
@@ -61,13 +61,12 @@ int	main(int argc, char **argv)
 
 	if (check_list_parse(argc, argv, &data))
 		return (1);
-	philos = calloc(data.number_of_philosophers, sizeof(t_philo));
+	philos = malloc(data.number_of_philosophers * sizeof(t_philo));
 	if (!philos)
 		return (1);
 	ft_init_philos(philos, &data);
 	ft_init_mutex(philos);
 	ft_start_threads(philos);
-	ft_destroy_mutex(philos, &data);
 	free(philos->forks);
 	free(philos);
 	return (0);

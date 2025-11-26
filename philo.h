@@ -6,7 +6,7 @@
 /*   By: gnicolo <gnicolo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 15:04:58 by giuseppenic       #+#    #+#             */
-/*   Updated: 2025/11/26 14:28:16 by gnicolo          ###   ########.fr       */
+/*   Updated: 2025/11/26 16:49:20 by gnicolo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void				ft_eat_think_sleep(void *arg);
 void				set_death_state(t_philo *philo);
 void				ft_print_state(t_philo *philo, t_state state);
 unsigned long		get_time(void);
-int					ft_one_philo(t_data *data);
 int					ft_check_input(char **argv, int argc);
 int					check_list_parse(int argc, char **argv, t_data *data);
 void				ft_init_philos(t_philo *philos, t_data *data);
@@ -77,7 +76,7 @@ int					ft_start_threads(t_philo *philos);
 int					ft_set_data(t_data *data, char **argv, int argc);
 void				set_death_state(t_philo *philo);
 int					ft_check_input(char **argv, int argc);
-int					ft_one_philo(t_data *data);
+void				ft_one_philo(void *data);
 int					get_all_ate(t_philo *philo);
 void				ft_print_state(t_philo *philo, t_state state);
 void				*ft_death_star(void *arg);

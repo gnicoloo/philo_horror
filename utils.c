@@ -6,7 +6,7 @@
 /*   By: gnicolo <gnicolo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:42:44 by gnicolo           #+#    #+#             */
-/*   Updated: 2025/11/24 14:55:52 by gnicolo          ###   ########.fr       */
+/*   Updated: 2025/11/26 16:53:18 by gnicolo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ unsigned long	get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-int	ft_one_philo(t_data *data)
+void	ft_one_philo(void *data)
 {
 	printf("0 1 has taken a fork\n");
-	usleep(data->time_to_die * 1000);
-	printf("%ld 1 died\n", data->time_to_die);
-	return (1);
+	usleep(((t_data *)data)->time_to_die * 1000);
+	printf("%ld 1 died\n", ((t_data *)data)->time_to_die);
+	pthread_mutex_destroy(&((t_data *)data)->all_ate_mutex);
 }
 
 int	ft_check_input(char **argv, int argc)
