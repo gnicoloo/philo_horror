@@ -6,58 +6,9 @@
 /*   By: gnicolo <gnicolo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 15:04:58 by giuseppenic       #+#    #+#             */
-/*   Updated: 2025/11/24 14:41:54 by gnicolo          ###   ########.fr       */
+/*   Updated: 2025/11/26 14:28:16 by gnicolo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// #ifndef PHILO_H
-// # define PHILO_H
-
-// # include <pthread.h>
-// # include <limits.h>
-// # include <unistd.h>
-// # include <stdio.h>
-// # include <stdlib.h>
-// # include <sys/time.h>
-// # include <stdbool.h>
-
-// typedef enum e_state
-// {
-//     THINKING,
-//     EATING,
-//     SLEEPING,
-//     DEAD,
-//     HAS_TAKEN_A_FORK
-// }               t_state;
-
-// typedef struct s_data
-// {
-//     long            time_to_die;
-//     long            time_to_eat;
-//     long            time_to_sleep;
-//     int             number_of_philosophers;
-//     int             number_of_times_each_philosopher_must_eat;
-//     int             all_ate;
-//     unsigned long   start_time;
-//     pthread_mutex_t all_ate_mutex;
-// }               t_data;
-
-// typedef struct s_philo
-// {
-//     int             id;
-//     int             meals_eaten;
-//     int             death_flag;
-//     unsigned long   last_meal_time;
-//     pthread_mutex_t *forks;
-//     pthread_mutex_t meal_lock;
-//     pthread_t       thread;
-//     pthread_mutex_t write_mutex;
-//     pthread_mutex_t *left_fork;
-//     pthread_mutex_t *right_fork;
-//     t_data         *data;
-// }               t_philo;
-
-// #endif
 
 #ifndef PHILO_H
 # define PHILO_H
@@ -90,7 +41,6 @@ typedef struct s_data
 	int				someone_died;
 	unsigned long	start_time;
 	pthread_mutex_t	write_mutex;
-	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	all_ate_mutex;
 	pthread_mutex_t	*forks;
 }					t_data;

@@ -6,7 +6,7 @@
 /*   By: gnicolo <gnicolo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:41:45 by gnicolo           #+#    #+#             */
-/*   Updated: 2025/11/24 14:53:04 by gnicolo          ###   ########.fr       */
+/*   Updated: 2025/11/26 14:23:25 by gnicolo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_init_mutex(t_philo *philos)
 	while (i < philos[0].data->number_of_philosophers)
 	{
 		pthread_mutex_init(&forks[i], NULL);
+		pthread_mutex_init(&philos[i].data->write_mutex, NULL);
 		i++;
 	}
 	i = 0;
@@ -77,7 +78,6 @@ void	ft_init_mutex(t_philo *philos)
 			% philos[0].data->number_of_philosophers];
 		i++;
 	}
-	pthread_mutex_init(&philos->data->write_mutex, NULL);
 	philos->forks = forks;
 }
 
@@ -100,8 +100,6 @@ int	check_list_parse(int argc, char **argv, t_data *data)
 		return (1);
 	}
 	if (data->number_of_philosophers == 1)
-	{
 		return (ft_one_philo(data));
-	}
 	return (0);
 }

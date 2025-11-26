@@ -6,7 +6,7 @@
 /*   By: gnicolo <gnicolo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:51:10 by gnicolo           #+#    #+#             */
-/*   Updated: 2025/11/24 14:53:28 by gnicolo          ###   ########.fr       */
+/*   Updated: 2025/11/26 14:27:19 by gnicolo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	ft_start_threads(t_philo *philos)
 
 	philos[0].data->start_time = get_time();
 	if (pthread_create(&monitor, NULL, ft_death_star, philos) != 0)
-		return (perror("Failed to create monitor thread"), 1);
+		return (printf("Failed to create monitor thread"), 1);
 	i = 0;
 	while (i < philos[0].data->number_of_philosophers)
 	{
 		if (pthread_create(&philos[i].thread, NULL, (void *)ft_routine,
 				&philos[i]) != 0)
-			return (perror("Failed to create philosopher thread"), 1);
+			return (printf("Failed to create philosopher thread"), 1);
 		usleep(100);
 		i++;
 	}
@@ -37,6 +37,21 @@ int	ft_start_threads(t_philo *philos)
 		i++;
 	}
 	return (0);
+}
+
+void	ft_destroy_mutex(t_philo *philos, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number_of_philosophers)
+	{
+		pthread_mutex_destroy(&philos[i].data->write_mutex);
+		pthread_mutex_destroy(&philos[i].meal_lock);
+		pthread_mutex_destroy(&philos[i].data->forks[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&data->all_ate_mutex);
 }
 
 int	main(int argc, char **argv)
@@ -52,8 +67,8 @@ int	main(int argc, char **argv)
 	ft_init_philos(philos, &data);
 	ft_init_mutex(philos);
 	ft_start_threads(philos);
+	ft_destroy_mutex(philos, &data);
 	free(philos->forks);
 	free(philos);
-	pthread_mutex_destroy(&data.all_ate_mutex);
 	return (0);
 }
