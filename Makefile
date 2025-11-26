@@ -1,35 +1,42 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: giuseppenicolo <giuseppenicolo@student.    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/24 13:47:50 by giuseppenic       #+#    #+#              #
-#    Updated: 2025/10/04 12:45:57 by giuseppenic      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-CC = gcc
+# Compiler
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+
+# Program name
 NAME = philo
-SRC = main.c
+
+# Source files
+SRC = main.c \
+      utils.c \
+      init_philo.c \
+      routine.c \
+      print_state.c\
+	  monitor.c
+
+# Object files
 OBJ = $(SRC:.c=.o)
 
+# Default rule
 all: $(NAME)
 
+# Linking
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
+# Compilation rule
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Clean object files
 clean:
-	rm -rf *.o
+	rm -f $(OBJ)
 
+# Clean everything
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
+# Recompile everything
 re: fclean all
 
 .PHONY: all clean fclean re
+# Compiler
