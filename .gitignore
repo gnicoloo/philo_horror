@@ -1,0 +1,61 @@
+# Executables
+philo
+*.out
+*.exe
+
+# Object files
+*.o
+*.obj
+obj/
+*.ko
+*.elf
+
+# Libraries
+*.a
+*.la
+*.lo
+*.so
+*.so.*
+*.dylib
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Compilation cache
+*.gch
+*.pch
+
+# Dependencies
+*.d
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.*.sw?
+
+# Test files
+test
+tests/
+a.out
+
+# Logs
+*.log
+helgrind.log
+valgrind.log
+
