@@ -192,17 +192,17 @@ Per testare il programma con diversi scenari:
 
 ## 📄 Licenza
 
-Questo progetto è parte del curriculum di **42 School**.
+Questo progetto è parte del curriculum di **42 Ecole**.
 
 ---
 
 ## 👤 Autore
 
-**gnicolo** - [42 School]
+**gnicolo** - [42 Firenze]
 
 ---
 
 ## 🙏 Ringraziamenti
 
-Grazie a 42 School per questo progetto stimolante che insegna concetti fondamentali di programmazione concorrente!
+Grazie a 42 Ecole per questo progetto stimolante che insegna concetti fondamentali di programmazione concorrente!
 
